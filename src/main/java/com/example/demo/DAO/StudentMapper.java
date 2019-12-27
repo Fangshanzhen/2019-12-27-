@@ -1,6 +1,9 @@
 package com.example.demo.DAO;
 
+import com.example.demo.DO.CourseDO;
+import com.example.demo.DO.ScDO;
 import com.example.demo.DO.StudentDO;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -44,4 +47,13 @@ public interface StudentMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(StudentDO record);
+
+    List<ScDO> findscoreById(@Param("sno") Integer sno);
+
+    /**
+     *
+     * @param cnos
+     * @return
+     */
+    List<CourseDO> findcourseByIds(@Param("cnos") List<String> cnos);
 }

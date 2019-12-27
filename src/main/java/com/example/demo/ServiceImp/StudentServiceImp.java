@@ -1,9 +1,11 @@
 package com.example.demo.ServiceImp;
 
+import com.example.demo.DO.CourseDO;
+import com.example.demo.DO.ScDO;
 import com.example.demo.Exception.ErrorCodeAndMsg;
 import com.example.demo.Exception.StudentException;
 import com.example.demo.Input.getmessageInout;
-import com.example.demo.Output.getmessageOutput;
+import com.example.demo.Output.getMessageOutput;
 import com.example.demo.Service.StudentService;
 import com.example.demo.Input.createInout;
 import com.example.demo.Output.createOutput;
@@ -17,6 +19,10 @@ import com.example.demo.DAO.StudentMapper;
 import com.example.demo.DO.StudentDO;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author qianchen
@@ -74,7 +80,35 @@ public class StudentServiceImp implements StudentService {
   }
 
   @Override
-  public getmessageOutput getmessage(getmessageInout request) {
-    return null;
+  public getMessageOutput getMessage(getmessageInout request) {
+    getMessageOutput result = new getMessageOutput();
+    Map<String, String> map = new HashMap<>();
+    StudentDO studentDO = studentMapper.selectByPrimaryKey(request.getSno());
+    if (studentDO == null) {
+      throw new StudentException(ErrorCodeAndMsg.student_number_does_not_exist);
+    }
+    List<ScDO> scDOS = studentMapper.findscoreById(request.getSno());
+    Map<String, String> map1 = new HashMap<>();
+    Map<String, String> map2 = new HashMap<>();
+    List<String> cnos = new ArrayList<>();
+    // 建立课程号与课程成绩的map2
+    for (ScDO sc : scDOS) {
+      map2.put(sc.getCno(), sc.getScore());
+      cnos.add(sc.getCno());
+    }
+    List<CourseDO> courseDOS = studentMapper.findcourseByIds(cnos);
+    // 建立课程号与课程名称的map1
+    for (CourseDO courseDO : courseDOS) {
+      for (String cno : cnos) {
+        if (cno.equals(courseDO.getCno())) {
+          map1.put(cno, courseDO.getCname());
+        }
+      }
+    }
+    for (String cno : cnos) {
+      map.put(map1.get(cno), map2.get(cno));
+    }
+    result.setMap(map);
+    return result;
   }
 }

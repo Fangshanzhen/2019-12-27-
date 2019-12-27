@@ -59,4 +59,16 @@
     select Sno, Sname, Sex, Sage, Sdept
     from student
   </select>
+
+  <select id="findscoreById" resultType="com.example.demo.DO.ScDO">
+  select * from sc where sno=#{sno}
+  </select>
+
+  <select id="findcourseByIds" resultType="com.example.demo.DO.CourseDO">
+  select * from course where cno in
+    <foreach close=")" collection="cnos" item="cno" open="(" separator=",">
+      #{cno}
+    </foreach>
+  </select>
+
 </mapper>

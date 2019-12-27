@@ -2,7 +2,7 @@ package com.example.demo.Controller;
 
 import com.example.demo.Exception.Response;
 import com.example.demo.Input.getmessageInout;
-import com.example.demo.Output.getmessageOutput;
+import com.example.demo.Output.getMessageOutput;
 import com.example.demo.Service.StudentService;
 import com.example.demo.Input.createInout;
 import com.example.demo.Output.createOutput;
@@ -35,14 +35,12 @@ public class StudentController {
     return response;
   }
 
-
-  @RequestMapping(value = "/getmessage",method = RequestMethod.POST)
-  @ApiOperation(value = "根据学号获得学生信息", notes = "根据学号获得学生信息")
-  public Response<getmessageOutput> getmessage(@RequestBody @Validated getmessageInout request) {
-    getmessageOutput result = studentService.getmessage(request);
+  @RequestMapping(value = "/getmessage", method = RequestMethod.POST)
+  @ApiOperation(value = "根据学号获得学生课程号及成绩", notes = "根据学号获得学生课程号及成绩")
+  public Response<getMessageOutput> getmessage(@RequestBody @Validated getmessageInout request) {
+    getMessageOutput result = studentService.getMessage(request);
     Response response = new Response();
     response.setData(result);
     return response;
   }
-
 }
