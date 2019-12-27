@@ -4,7 +4,7 @@ import com.example.demo.DO.CourseDO;
 import com.example.demo.DO.ScDO;
 import com.example.demo.Exception.ErrorCodeAndMsg;
 import com.example.demo.Exception.StudentException;
-import com.example.demo.Input.getmessageInout;
+import com.example.demo.Input.getMessageInout;
 import com.example.demo.Output.getMessageOutput;
 import com.example.demo.Service.StudentService;
 import com.example.demo.Input.createInout;
@@ -80,7 +80,7 @@ public class StudentServiceImp implements StudentService {
   }
 
   @Override
-  public getMessageOutput getMessage(getmessageInout request) {
+  public getMessageOutput getMessage(getMessageInout request) {
     getMessageOutput result = new getMessageOutput();
     Map<String, String> map = new HashMap<>();
     StudentDO studentDO = studentMapper.selectByPrimaryKey(request.getSno());

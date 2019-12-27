@@ -1,4 +1,5 @@
 package com.example.demo.Exception;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import java.io.Serializable;
@@ -9,6 +10,7 @@ import java.io.Serializable;
  */
 @Getter
 @Setter
+@Data
 public class Response<T> implements Serializable {
   private static final long serialVersionUID = -4505655308965878999L;
   // 请求成功返回码为：000
@@ -26,14 +28,12 @@ public class Response<T> implements Serializable {
   }
 
   public Response(String code, String msg) {
-
     this();
     this.code = code;
     this.msg = msg;
   }
 
   public Response(String code, String msg, T data) {
-
     this();
     this.code = code;
     this.msg = msg;
@@ -41,7 +41,6 @@ public class Response<T> implements Serializable {
   }
 
   public Response(T data) {
-
     this();
     this.data = data;
   }

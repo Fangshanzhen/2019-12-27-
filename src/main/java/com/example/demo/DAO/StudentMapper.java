@@ -48,6 +48,11 @@ public interface StudentMapper {
      */
     int updateByPrimaryKey(StudentDO record);
 
+    /**
+     *
+     * @param sno
+     * @return
+     */
     List<ScDO> findscoreById(@Param("sno") Integer sno);
 
     /**
