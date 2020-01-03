@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -18,6 +19,7 @@ import javax.validation.constraints.NotNull;
 @Setter
 @ApiModel(value = "入参")
 public class createInout {
+    @Range()
     @ApiModelProperty(value = "学号", required = true)
     @NotNull(message = "学号不能为空！")
     private Integer sno;

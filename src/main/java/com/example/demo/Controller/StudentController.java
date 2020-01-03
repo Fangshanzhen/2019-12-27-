@@ -1,11 +1,14 @@
 package com.example.demo.Controller;
 
+import com.example.demo.DO.ScDO;
+import com.example.demo.DO.StudentDO;
 import com.example.demo.Exception.Response;
 import com.example.demo.Input.getMessageInout;
 import com.example.demo.Output.getMessageOutput;
 import com.example.demo.Service.StudentService;
 import com.example.demo.Input.createInout;
 import com.example.demo.Output.createOutput;
+import com.example.demo.Utils.RedisUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.List;
+
 /**
  * @author qianchen
  * @date 2019/12/26 14:19
@@ -27,6 +32,7 @@ import javax.validation.Valid;
 public class StudentController {
 
   @Autowired private StudentService studentService;
+  @Autowired private RedisUtil redis;
 
   @RequestMapping(value = "/create", method = RequestMethod.POST)
   @ApiOperation(value = "新增学生信息", notes = "新增学生信息")
@@ -57,4 +63,8 @@ public class StudentController {
 
     return response;
   }
+
+
 }
+
+

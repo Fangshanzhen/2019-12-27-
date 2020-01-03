@@ -4,6 +4,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.util.Date;
+
 /**
  * @author qianchen
  * @date 2019/12/26 11:55
@@ -13,5 +15,7 @@ import lombok.Data;
 public class createOutput {
     @ApiModelProperty(value = "Id")
     private Integer sno;
+    @ApiModelProperty(value = "date")
+    private Date sdate;
 
 }

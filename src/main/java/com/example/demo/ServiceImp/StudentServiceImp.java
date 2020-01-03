@@ -19,10 +19,7 @@ import com.example.demo.DAO.StudentMapper;
 import com.example.demo.DO.StudentDO;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author qianchen
@@ -71,10 +68,13 @@ public class StudentServiceImp implements StudentService {
     student1.setSage(request.getSage());
     student1.setSex(request.getSex());
     student1.setSdept(request.getSdept());
+    student1.setSdate(new Date());
+
     studentMapper.insert(student1);
 
     createOutput result = new createOutput();
     result.setSno(student1.getSno());
+    result.setSdate(student1.getSdate());
 
     return result;
   }
