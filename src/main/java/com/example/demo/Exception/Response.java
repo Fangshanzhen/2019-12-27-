@@ -11,6 +11,9 @@ import java.io.Serializable;
 @Getter
 @Setter
 @Data
+/**
+ * 通用返回结果类
+ */
 public class Response<T> implements Serializable {
   private static final long serialVersionUID = -4505655308965878999L;
   // 请求成功返回码为：000

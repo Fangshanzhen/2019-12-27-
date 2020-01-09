@@ -3,6 +3,7 @@ package com.example.demo.Exception;
 /**
  * @author qianchen
  * @date 2019/12/26 14:58
+ * 异常枚举类
  */
 public enum ErrorCodeAndMsg {
   student_number_does_not_exist("001", "学号不存在"),
